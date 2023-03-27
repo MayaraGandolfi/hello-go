@@ -80,4 +80,18 @@ func main() {
 
 	fatia4 = arr[0:1]
 	fmt.Println(fatia4)
+
+	//Mapa
+	mapa := make(map[string]int)
+	mapa["chave"] = 10
+	fmt.Println(mapa["chave"])
+	mapa["casa"] = 5
+	fmt.Println(mapa)
+
+	elemento := make(map[string]string)
+	elemento["H"] = "Hidrogenio"
+	elemento["He"] = "Helio"
+	elemento["Li"] = "Litio"
+	fmt.Println(elemento["Li"])
+
 }
