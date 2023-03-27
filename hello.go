@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 var x = "Hello, world!"
 
@@ -105,23 +108,69 @@ func main() {
 	fmt.Println("Retangulo r area ", r.area())
 	fmt.Println("Retangulo r perimetro ", r.perimetro())
 
+	//Interfaces
+	q := quadrado{lado: 25}
+	c := circulo{raio: 100}
+
+	medir(q)
+	medir(c)
+
+	medir(r)
+
 }
 
-//Estrutura
+// Estrutura
 type pessoa struct {
 	nome  string
-	idade int
+	idade float64
 }
 
 type retangulo struct {
-	comprimento, altura int
+	comprimento, altura float64
 }
 
-//Metodo
-func (r retangulo) perimetro() int {
+type quadrado struct {
+	lado float64
+}
+
+type circulo struct {
+	raio float64
+}
+
+// Metodo
+// variavel tipo - nome metodo - tipo return
+func (r retangulo) perimetro() float64 {
 	return 2*r.altura + 2*r.comprimento
 }
 
-func (r retangulo) area() int {
+func (r retangulo) area() float64 {
 	return r.comprimento * r.altura
+}
+
+func (q quadrado) perimetro() float64 {
+	return q.lado * 4
+}
+
+func (q quadrado) area() float64 {
+	return q.lado * q.lado
+}
+
+func (c circulo) perimetro() float64 {
+	return 2 * math.Pi * c.raio
+}
+
+func (c circulo) area() float64 {
+	return math.Pi * c.raio * c.raio
+}
+
+// Interface
+type geometria interface {
+	area() float64
+	perimetro() float64
+}
+
+func medir(g geometria) {
+	fmt.Println(g)
+	fmt.Println(g.area())
+	fmt.Println(g.perimetro())
 }
