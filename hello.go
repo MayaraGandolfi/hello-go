@@ -94,4 +94,34 @@ func main() {
 	elemento["Li"] = "Litio"
 	fmt.Println(elemento["Li"])
 
+	//Estrutura
+	fmt.Println(pessoa{"Maria", 54})
+	fmt.Println(pessoa{"João", 25})
+
+	r := retangulo{altura: 25, comprimento: 50}
+	fmt.Println("Retangulo r comprimento e altura = ", r)
+
+	//Metodo
+	fmt.Println("Retangulo r area ", r.area())
+	fmt.Println("Retangulo r perimetro ", r.perimetro())
+
+}
+
+//Estrutura
+type pessoa struct {
+	nome  string
+	idade int
+}
+
+type retangulo struct {
+	comprimento, altura int
+}
+
+//Metodo
+func (r retangulo) perimetro() int {
+	return 2*r.altura + 2*r.comprimento
+}
+
+func (r retangulo) area() int {
+	return r.comprimento * r.altura
 }
